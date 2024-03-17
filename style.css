@@ -1,0 +1,307 @@
+/* Import Google font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* Global Reset and Font Declaration */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Body Styles */
+body {
+  background: #4f75df;
+  padding: 30px;
+  height: 100vh;
+}
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+/* Chatbot Toggler Button Styles */
+.chatbot-toggler {
+  position: fixed;
+  bottom: 30px;
+  right: 35px;
+  outline: none;
+  border: none;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #724ae8;
+  transition: all 0.2s ease;
+}
+
+/* Styles for Chatbot Toggler Icon Spans */
+.chatbot-toggler span {
+  color: #fff;
+  position: absolute;
+}
+
+/* Show Chatbot Icon */
+.chatbot-toggler span:last-child,
+body.show-chatbot .chatbot-toggler span:first-child  {
+  opacity: 0;
+}
+
+/* Hide Chatbot Icon */
+body.show-chatbot .chatbot-toggler span:last-child {
+  opacity: 1;
+}
+
+/* Chatbot Container Styles */
+.chatbot {
+  position: fixed;
+  right: 35px;
+  bottom: 90px;
+  width: 420px;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.5);
+  transform-origin: bottom right;
+  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
+              0 32px 64px -48px rgba(0,0,0,0.5);
+  transition: all 0.1s ease;
+}
+
+/* Show Chatbot Container */
+body.show-chatbot .chatbot {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* Chatbot Header Styles */
+.chatbot header {
+  padding: 16px 0;
+  position: relative;
+  text-align: center;
+  color: #fff;
+  background: #724ae8;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Close Button Styles */
+.chatbot header span {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  display: none;
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+/* Header Title Styles */
+header h2 {
+  font-size: 1.4rem;
+}
+
+/* Chatbox Styles */
+.chatbot .chatbox {
+  overflow-y: auto;
+  height: 510px;
+  padding: 30px 20px 100px;
+}
+
+/* Scrollbar Styles */
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 25px;
+}
+
+.chatbot :where(.chatbox, textarea)::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 25px;
+}
+
+/* Individual Chat Styles */
+.chatbox .chat {
+  display: flex;
+  list-style: none;
+}
+
+/* Outgoing Chat Styles */
+.chatbox .outgoing {
+  margin: 20px 0;
+  justify-content: flex-end;
+  
+}
+.chatbox .outgoing p{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 5px;
+  color: #000;
+  background-color: rgb(214, 218, 8);
+}
+
+.incoming{
+  display: flex;
+  align-items: center;
+}
+/* Incoming Chat Icon Styles */
+.chatbox .incoming span {
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  cursor: default;
+  text-align: center;
+  line-height: 32px;
+  align-self: flex-end;
+  background: #724ae8;
+  border-radius: 4px;
+  margin: 0 10px 7px 0;
+}
+
+/* Chat Message Paragraph Styles */
+.chatbox .chat p {
+  white-space: pre-wrap;
+  border-radius: 10px 10px 0 10px;
+  max-width: 75%;
+  color: #000000;
+  font-size: 0.95rem;
+  padding: 10px;
+ 
+}
+
+/* Incoming Chat Message Styles */
+.chatbox .incoming p {
+  border-radius: 10px 10px 10px 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Error Message Styles */
+.chatbox .chat p.error {
+  color: #721c24;
+  background: #f8d7da;
+}
+
+/* Incoming Message Styles */
+.chatbox .incoming p {
+  color: #000;
+}
+
+/* Chat Input Styles */
+.chatbot .chat-input {
+  display: flex;
+  gap: 5px;
+  padding: 5px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #fff;
+  padding: 3px 20px;
+  border-top: 1px solid #ddd;
+}
+.chat-input{
+  display: grid;
+  grid-template-columns: 1fr 35fr auto;
+  justify-content: space-around;
+  align-items: center;
+}
+/* Textarea Styles */
+.chat-input input {
+  height: 55px;
+  width: 100%;
+  display: block;
+  padding: 10px;
+  border: none;
+  outline: none;
+  resize: none;
+  max-height: 180px;
+  font-size: 0.95rem;
+}
+
+/* Send Button Styles */
+.chat-input span {
+  align-self: flex-end;
+  color: #724ae8;
+  cursor: pointer;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  visibility: hidden;
+  font-size: 1.35rem;
+}
+
+/* Show Send Button on Valid Textarea */
+.chat-input textarea:valid ~ span {
+  visibility: visible;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 490px) {
+  .chatbot-toggler {
+    right: 20px;
+    bottom: 20px;
+  }
+  .chatbot {
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    border-radius: 0;
+    width: 100%;
+  }
+  .chatbot .chatbox {
+    height: 90%;
+    padding: 25px 15px 100px;
+  }
+  .chatbot .chat-input {
+    padding: 5px 15px;
+  }
+  .chatbot header span {
+    display: block;
+  }
+}
+
+/* Add styling for the "Send" button */
+#send-btn {
+  background-color: #726a95; /* Dark purple button background color */
+            color: #ffffff; /* Button text color */
+            border: none;
+            border-radius: 100%; /* Rounded border for circular button */
+            width: 50px; /* Fixed width button */
+            height: 50px; /* Fixed height button */
+            font-size: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            outline: none; /* Remove default outline */
+            margin-left: 10px; /* Add some space between input and button */
+            text-align: center;
+}
+
+#send-btn:hover {
+  background-color: #2980b9; /* Darker green on hover */
+}
+
+/* Add the styling for the "Learn" button */
+#turbo-btn {
+  background-color: #093756; /* Blue background color */
+  color: white; /* White text color */
+  padding: 5px 20px; /* Padding for the button */
+  margin: 5px; /* Margin to separate buttons */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer; /* Add pointer cursor on hover */
+  outline: none; /* Remove default focus outline */
+  height: 100%;
+}
+
+#turbo-btn:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+
+}
